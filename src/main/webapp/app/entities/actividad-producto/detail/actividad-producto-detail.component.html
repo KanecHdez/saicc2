@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="actividadProducto">
+      <h2 data-cy="actividadProductoDetailsHeading">
+        <span jhiTranslate="saiccApp.actividadProducto.detail.title">Actividad Producto</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ actividadProducto.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.actividadProducto.descripcion">Descripcion</span></dt>
+        <dd>
+          <span>{{ actividadProducto.descripcion }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.actividadProducto.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ actividadProducto.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.actividadProducto.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ actividadProducto.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.actividadProducto.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+          <span>{{ actividadProducto.lastModifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.actividadProducto.tabuladorActProd">Tabulador Act Prod</span></dt>
+        <dd>
+          <div *ngIf="actividadProducto.tabuladorActProd">
+            <a [routerLink]="['/tabulador-actividad-producto', actividadProducto.tabuladorActProd.id, 'view']">{{
+              actividadProducto.tabuladorActProd.descripcion
+            }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.actividadProducto.dictamen">Dictamen</span></dt>
+        <dd>
+          <div *ngIf="actividadProducto.dictamen">
+            <a [routerLink]="['/dictamen', actividadProducto.dictamen.id, 'view']">{{ actividadProducto.dictamen.noDictamen }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/actividad-producto', actividadProducto.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

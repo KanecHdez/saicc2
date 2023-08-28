@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity TabuladorActividadProducto.
+    -->
+    <changeSet id="20230825180028-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="tabulador_act_superior_id"
+                                 baseTableName="tabuladoractproduc"
+                                 constraintName="fk_tabuladoractproduc__tabulador_act_superior_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tabuladoractproduc"/>
+
+        <addForeignKeyConstraint baseColumnNames="tabulador_id"
+                                 baseTableName="tabuladoractproduc"
+                                 constraintName="fk_tabuladoractproduc__tabulador_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tabuladorpromocion"/>
+    </changeSet>
+</databaseChangeLog>

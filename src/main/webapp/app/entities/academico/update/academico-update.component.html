@@ -1,0 +1,168 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-academico-heading" data-cy="AcademicoCreateUpdateHeading" jhiTranslate="saiccApp.academico.home.createOrEditLabel">
+        Crear o editar Academico
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.academico.cveEmpleado" for="field_cveEmpleado">Cve Empleado</label>
+          <input
+            type="number"
+            class="form-control"
+            name="cveEmpleado"
+            id="field_cveEmpleado"
+            data-cy="cveEmpleado"
+            formControlName="cveEmpleado"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.academico.nombres" for="field_nombres">Nombres</label>
+          <input type="text" class="form-control" name="nombres" id="field_nombres" data-cy="nombres" formControlName="nombres" />
+          <div *ngIf="editForm.get('nombres')!.invalid && (editForm.get('nombres')!.dirty || editForm.get('nombres')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nombres')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 100 }"
+            >
+              Este campo no puede superar más de 100 caracteres.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.academico.primerApellido" for="field_primerApellido">Primer Apellido</label>
+          <input
+            type="text"
+            class="form-control"
+            name="primerApellido"
+            id="field_primerApellido"
+            data-cy="primerApellido"
+            formControlName="primerApellido"
+          />
+          <div
+            *ngIf="
+              editForm.get('primerApellido')!.invalid && (editForm.get('primerApellido')!.dirty || editForm.get('primerApellido')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('primerApellido')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 100 }"
+            >
+              Este campo no puede superar más de 100 caracteres.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.academico.segundoApellido" for="field_segundoApellido">Segundo Apellido</label>
+          <input
+            type="text"
+            class="form-control"
+            name="segundoApellido"
+            id="field_segundoApellido"
+            data-cy="segundoApellido"
+            formControlName="segundoApellido"
+          />
+          <div
+            *ngIf="
+              editForm.get('segundoApellido')!.invalid &&
+              (editForm.get('segundoApellido')!.dirty || editForm.get('segundoApellido')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('segundoApellido')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 100 }"
+            >
+              Este campo no puede superar más de 100 caracteres.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.academico.modifiedBy" for="field_modifiedBy">Modified By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="modifiedBy"
+            id="field_modifiedBy"
+            data-cy="modifiedBy"
+            formControlName="modifiedBy"
+          />
+          <div *ngIf="editForm.get('modifiedBy')!.invalid && (editForm.get('modifiedBy')!.dirty || editForm.get('modifiedBy')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('modifiedBy')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 100 }"
+            >
+              Este campo no puede superar más de 100 caracteres.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.academico.createdDate" for="field_createdDate">Created Date</label>
+          <div class="d-flex">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="datetime-local"
+              class="form-control"
+              name="createdDate"
+              formControlName="createdDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.academico.lastModifiedDate" for="field_lastModifiedDate"
+            >Last Modified Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_lastModifiedDate"
+              data-cy="lastModifiedDate"
+              type="datetime-local"
+              class="form-control"
+              name="lastModifiedDate"
+              formControlName="lastModifiedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

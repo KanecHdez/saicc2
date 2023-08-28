@@ -1,0 +1,138 @@
+<div>
+  <h2 id="page-heading" data-cy="PuestoHeading">
+    <span jhiTranslate="saiccApp.puesto.home.title">Puestos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="saiccApp.puesto.home.refreshListLabel">Refrescar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-puesto"
+        [routerLink]="['/puesto/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="saiccApp.puesto.home.createLabel"> Crear nuevo Puesto </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="puestos?.length === 0">
+    <span jhiTranslate="saiccApp.puesto.home.notFound">Ningún Puestos encontrado</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="puestos && puestos.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="cve">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.puesto.cve">Cve</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nombre">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.puesto.nombre">Nombre</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="puntaje">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.puesto.puntaje">Puntaje</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ranking">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.puesto.ranking">Ranking</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="modifiedBy">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.puesto.modifiedBy">Modified By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.puesto.createdDate">Created Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lastModifiedDate">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.puesto.lastModifiedDate">Last Modified Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let puesto of puestos; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/puesto', puesto.id, 'view']">{{ puesto.id }}</a>
+          </td>
+          <td>{{ puesto.cve }}</td>
+          <td>{{ puesto.nombre }}</td>
+          <td>{{ puesto.puntaje }}</td>
+          <td>{{ puesto.ranking }}</td>
+          <td>{{ puesto.modifiedBy }}</td>
+          <td>{{ puesto.createdDate | formatMediumDatetime }}</td>
+          <td>{{ puesto.lastModifiedDate | formatMediumDatetime }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/puesto', puesto.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Vista</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/puesto', puesto.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+              </button>
+
+              <button type="submit" (click)="delete(puesto)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="puestos && puestos.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

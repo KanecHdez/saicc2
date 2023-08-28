@@ -48,6 +48,17 @@ public class CacheConfiguration {
             createCache(cm, com.uady.saicc.domain.User.class.getName());
             createCache(cm, com.uady.saicc.domain.Authority.class.getName());
             createCache(cm, com.uady.saicc.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.uady.saicc.domain.Academico.class.getName());
+            createCache(cm, com.uady.saicc.domain.Dictamen.class.getName());
+            createCache(cm, com.uady.saicc.domain.Dictamen.class.getName() + ".actividads");
+            createCache(cm, com.uady.saicc.domain.Periodo.class.getName());
+            createCache(cm, com.uady.saicc.domain.ComisionDictaminadora.class.getName());
+            createCache(cm, com.uady.saicc.domain.CentroDocente.class.getName());
+            createCache(cm, com.uady.saicc.domain.Puesto.class.getName());
+            createCache(cm, com.uady.saicc.domain.TabuladorPromocion.class.getName());
+            createCache(cm, com.uady.saicc.domain.TabuladorPromocion.class.getName() + ".tabuladorActProds");
+            createCache(cm, com.uady.saicc.domain.TabuladorActividadProducto.class.getName());
+            createCache(cm, com.uady.saicc.domain.ActividadProducto.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

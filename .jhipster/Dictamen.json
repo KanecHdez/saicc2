@@ -1,0 +1,128 @@
+{
+  "applications": "*",
+  "changelogDate": "20230825180022",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "dictamen",
+  "fields": [
+    {
+      "fieldName": "noDictamen",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "fechaPromocion",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "puntosAlcanzados",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "puntosRequeridos",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "puntosExcedentes",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "puntosFaltantes",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "puntosExcedentesAnterior",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "puntosPuestoActual",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "puntosPuestoSolicitado",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "procede",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "numeroInstancia",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "folioHomologacion",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "15"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastModifiedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Dictamen",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "actividadProducto",
+      "otherEntityRelationshipName": "dictamen",
+      "relationshipName": "actividad",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "nombres",
+      "otherEntityName": "academico",
+      "relationshipName": "academico",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "puesto",
+      "relationshipName": "puestoActual",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "puesto",
+      "relationshipName": "puestoSolicitado",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "descripcion",
+      "otherEntityName": "periodo",
+      "relationshipName": "periodo",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "comisionDictaminadora",
+      "relationshipName": "comisionDictaminadora",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "centroDocente",
+      "relationshipName": "dependencia",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "tabuladorPromocion",
+      "relationshipName": "tabuladorPromocion",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

@@ -1,0 +1,29 @@
+{
+  "saiccApp": {
+    "actividadProducto": {
+      "home": {
+        "title": "Actividad Productos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Actividad Producto",
+        "createOrEditLabel": "Crear o editar Actividad Producto",
+        "notFound": "Ningún Actividad Productos encontrado"
+      },
+      "created": "Un nuevo Actividad Producto ha sido creado con el identificador {{ param }}",
+      "updated": "Un Actividad Producto ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Actividad Producto ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Actividad Producto {{ id }}?"
+      },
+      "detail": {
+        "title": "Actividad Producto"
+      },
+      "id": "ID",
+      "descripcion": "Descripcion",
+      "modifiedBy": "Modified By",
+      "createdDate": "Created Date",
+      "lastModifiedDate": "Last Modified Date",
+      "tabuladorActProd": "Tabulador Act Prod",
+      "dictamen": "Dictamen"
+    }
+  }
+}

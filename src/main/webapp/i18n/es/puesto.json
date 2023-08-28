@@ -1,0 +1,30 @@
+{
+  "saiccApp": {
+    "puesto": {
+      "home": {
+        "title": "Puestos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Puesto",
+        "createOrEditLabel": "Crear o editar Puesto",
+        "notFound": "Ningún Puestos encontrado"
+      },
+      "created": "Un nuevo Puesto ha sido creado con el identificador {{ param }}",
+      "updated": "Un Puesto ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Puesto ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Puesto {{ id }}?"
+      },
+      "detail": {
+        "title": "Puesto"
+      },
+      "id": "ID",
+      "cve": "Cve",
+      "nombre": "Nombre",
+      "puntaje": "Puntaje",
+      "ranking": "Ranking",
+      "modifiedBy": "Modified By",
+      "createdDate": "Created Date",
+      "lastModifiedDate": "Last Modified Date"
+    }
+  }
+}

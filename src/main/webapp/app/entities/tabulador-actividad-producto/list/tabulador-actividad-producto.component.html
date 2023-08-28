@@ -1,0 +1,197 @@
+<div>
+  <h2 id="page-heading" data-cy="TabuladorActividadProductoHeading">
+    <span jhiTranslate="saiccApp.tabuladorActividadProducto.home.title">Tabulador Actividad Productos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="saiccApp.tabuladorActividadProducto.home.refreshListLabel">Refrescar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-tabulador-actividad-producto"
+        [routerLink]="['/tabulador-actividad-producto/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="saiccApp.tabuladorActividadProducto.home.createLabel"> Crear nuevo Tabulador Actividad Producto </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="tabuladorActividadProductos?.length === 0">
+    <span jhiTranslate="saiccApp.tabuladorActividadProducto.home.notFound">Ningún Tabulador Actividad Productos encontrado</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="tabuladorActividadProductos && tabuladorActividadProductos.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="clave">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.tabuladorActividadProducto.clave">Clave</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="cveTabProm">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.tabuladorActividadProducto.cveTabProm">Cve Tab Prom</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nivel">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.tabuladorActividadProducto.nivel">Nivel</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="descripcion">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.tabuladorActividadProducto.descripcion">Descripcion</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ingresoMinimo">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.tabuladorActividadProducto.ingresoMinimo">Ingreso Minimo</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ingresoMaximo">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.tabuladorActividadProducto.ingresoMaximo">Ingreso Maximo</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="puntosMaximos">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.tabuladorActividadProducto.puntosMaximos">Puntos Maximos</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="modifiedBy">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.tabuladorActividadProducto.modifiedBy">Modified By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.tabuladorActividadProducto.createdDate">Created Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lastModifiedDate">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.tabuladorActividadProducto.lastModifiedDate">Last Modified Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="tabuladorActSuperior.descripcion">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.tabuladorActividadProducto.tabuladorActSuperior">Tabulador Act Superior</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="tabulador.id">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.tabuladorActividadProducto.tabulador">Tabulador</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tabuladorActividadProducto of tabuladorActividadProductos; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/tabulador-actividad-producto', tabuladorActividadProducto.id, 'view']">{{
+              tabuladorActividadProducto.id
+            }}</a>
+          </td>
+          <td>{{ tabuladorActividadProducto.clave }}</td>
+          <td>{{ tabuladorActividadProducto.cveTabProm }}</td>
+          <td>{{ tabuladorActividadProducto.nivel }}</td>
+          <td>{{ tabuladorActividadProducto.descripcion }}</td>
+          <td>{{ tabuladorActividadProducto.ingresoMinimo }}</td>
+          <td>{{ tabuladorActividadProducto.ingresoMaximo }}</td>
+          <td>{{ tabuladorActividadProducto.puntosMaximos }}</td>
+          <td>{{ tabuladorActividadProducto.modifiedBy }}</td>
+          <td>{{ tabuladorActividadProducto.createdDate | formatMediumDatetime }}</td>
+          <td>{{ tabuladorActividadProducto.lastModifiedDate | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="tabuladorActividadProducto.tabuladorActSuperior">
+              <a [routerLink]="['/tabulador-actividad-producto', tabuladorActividadProducto.tabuladorActSuperior.id, 'view']">{{
+                tabuladorActividadProducto.tabuladorActSuperior.descripcion
+              }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="tabuladorActividadProducto.tabulador">
+              <a [routerLink]="['/tabulador-promocion', tabuladorActividadProducto.tabulador.id, 'view']">{{
+                tabuladorActividadProducto.tabulador.id
+              }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/tabulador-actividad-producto', tabuladorActividadProducto.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Vista</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/tabulador-actividad-producto', tabuladorActividadProducto.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+              </button>
+
+              <button type="submit" (click)="delete(tabuladorActividadProducto)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="tabuladorActividadProductos && tabuladorActividadProductos.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

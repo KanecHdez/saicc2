@@ -1,0 +1,30 @@
+{
+  "saiccApp": {
+    "academico": {
+      "home": {
+        "title": "Academicos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Academico",
+        "createOrEditLabel": "Create or edit a Academico",
+        "notFound": "No Academicos found"
+      },
+      "created": "A new Academico is created with identifier {{ param }}",
+      "updated": "A Academico is updated with identifier {{ param }}",
+      "deleted": "A Academico is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Academico {{ id }}?"
+      },
+      "detail": {
+        "title": "Academico"
+      },
+      "id": "ID",
+      "cveEmpleado": "Cve Empleado",
+      "nombres": "Nombres",
+      "primerApellido": "Primer Apellido",
+      "segundoApellido": "Segundo Apellido",
+      "modifiedBy": "Modified By",
+      "createdDate": "Created Date",
+      "lastModifiedDate": "Last Modified Date"
+    }
+  }
+}

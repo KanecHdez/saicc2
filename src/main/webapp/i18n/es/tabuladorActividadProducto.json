@@ -1,0 +1,35 @@
+{
+  "saiccApp": {
+    "tabuladorActividadProducto": {
+      "home": {
+        "title": "Tabulador Actividad Productos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Tabulador Actividad Producto",
+        "createOrEditLabel": "Crear o editar Tabulador Actividad Producto",
+        "notFound": "Ningún Tabulador Actividad Productos encontrado"
+      },
+      "created": "Un nuevo Tabulador Actividad Producto ha sido creado con el identificador {{ param }}",
+      "updated": "Un Tabulador Actividad Producto ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Tabulador Actividad Producto ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Tabulador Actividad Producto {{ id }}?"
+      },
+      "detail": {
+        "title": "Tabulador Actividad Producto"
+      },
+      "id": "ID",
+      "clave": "Clave",
+      "cveTabProm": "Cve Tab Prom",
+      "nivel": "Nivel",
+      "descripcion": "Descripcion",
+      "ingresoMinimo": "Ingreso Minimo",
+      "ingresoMaximo": "Ingreso Maximo",
+      "puntosMaximos": "Puntos Maximos",
+      "modifiedBy": "Modified By",
+      "createdDate": "Created Date",
+      "lastModifiedDate": "Last Modified Date",
+      "tabuladorActSuperior": "Tabulador Act Superior",
+      "tabulador": "Tabulador"
+    }
+  }
+}

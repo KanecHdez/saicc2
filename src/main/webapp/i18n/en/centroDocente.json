@@ -1,0 +1,26 @@
+{
+  "saiccApp": {
+    "centroDocente": {
+      "home": {
+        "title": "Centro Docentes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Centro Docente",
+        "createOrEditLabel": "Create or edit a Centro Docente",
+        "notFound": "No Centro Docentes found"
+      },
+      "created": "A new Centro Docente is created with identifier {{ param }}",
+      "updated": "A Centro Docente is updated with identifier {{ param }}",
+      "deleted": "A Centro Docente is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Centro Docente {{ id }}?"
+      },
+      "detail": {
+        "title": "Centro Docente"
+      },
+      "id": "ID",
+      "cve": "Cve",
+      "nombre": "Nombre",
+      "comisionDictaminadora": "Comision Dictaminadora"
+    }
+  }
+}

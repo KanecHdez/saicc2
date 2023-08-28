@@ -1,0 +1,116 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-puesto-heading" data-cy="PuestoCreateUpdateHeading" jhiTranslate="saiccApp.puesto.home.createOrEditLabel">
+        Crear o editar Puesto
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.puesto.cve" for="field_cve">Cve</label>
+          <input type="number" class="form-control" name="cve" id="field_cve" data-cy="cve" formControlName="cve" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.puesto.nombre" for="field_nombre">Nombre</label>
+          <input type="text" class="form-control" name="nombre" id="field_nombre" data-cy="nombre" formControlName="nombre" />
+          <div *ngIf="editForm.get('nombre')!.invalid && (editForm.get('nombre')!.dirty || editForm.get('nombre')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nombre')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 100 }"
+            >
+              Este campo no puede superar más de 100 caracteres.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.puesto.puntaje" for="field_puntaje">Puntaje</label>
+          <input type="number" class="form-control" name="puntaje" id="field_puntaje" data-cy="puntaje" formControlName="puntaje" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.puesto.ranking" for="field_ranking">Ranking</label>
+          <input type="number" class="form-control" name="ranking" id="field_ranking" data-cy="ranking" formControlName="ranking" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.puesto.modifiedBy" for="field_modifiedBy">Modified By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="modifiedBy"
+            id="field_modifiedBy"
+            data-cy="modifiedBy"
+            formControlName="modifiedBy"
+          />
+          <div *ngIf="editForm.get('modifiedBy')!.invalid && (editForm.get('modifiedBy')!.dirty || editForm.get('modifiedBy')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('modifiedBy')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 100 }"
+            >
+              Este campo no puede superar más de 100 caracteres.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.puesto.createdDate" for="field_createdDate">Created Date</label>
+          <div class="d-flex">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="datetime-local"
+              class="form-control"
+              name="createdDate"
+              formControlName="createdDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.puesto.lastModifiedDate" for="field_lastModifiedDate">Last Modified Date</label>
+          <div class="d-flex">
+            <input
+              id="field_lastModifiedDate"
+              data-cy="lastModifiedDate"
+              type="datetime-local"
+              class="form-control"
+              name="lastModifiedDate"
+              formControlName="lastModifiedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+{
+  "saiccApp": {
+    "puesto": {
+      "home": {
+        "title": "Puestos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Puesto",
+        "createOrEditLabel": "Create or edit a Puesto",
+        "notFound": "No Puestos found"
+      },
+      "created": "A new Puesto is created with identifier {{ param }}",
+      "updated": "A Puesto is updated with identifier {{ param }}",
+      "deleted": "A Puesto is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Puesto {{ id }}?"
+      },
+      "detail": {
+        "title": "Puesto"
+      },
+      "id": "ID",
+      "cve": "Cve",
+      "nombre": "Nombre",
+      "puntaje": "Puntaje",
+      "ranking": "Ranking",
+      "modifiedBy": "Modified By",
+      "createdDate": "Created Date",
+      "lastModifiedDate": "Last Modified Date"
+    }
+  }
+}

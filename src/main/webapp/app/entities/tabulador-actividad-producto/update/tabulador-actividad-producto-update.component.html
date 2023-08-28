@@ -1,0 +1,233 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-tabulador-actividad-producto-heading"
+        data-cy="TabuladorActividadProductoCreateUpdateHeading"
+        jhiTranslate="saiccApp.tabuladorActividadProducto.home.createOrEditLabel"
+      >
+        Crear o editar Tabulador Actividad Producto
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.tabuladorActividadProducto.clave" for="field_clave">Clave</label>
+          <input type="text" class="form-control" name="clave" id="field_clave" data-cy="clave" formControlName="clave" />
+          <div *ngIf="editForm.get('clave')!.invalid && (editForm.get('clave')!.dirty || editForm.get('clave')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('clave')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 10 }"
+            >
+              Este campo no puede superar más de 10 caracteres.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.tabuladorActividadProducto.cveTabProm" for="field_cveTabProm"
+            >Cve Tab Prom</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="cveTabProm"
+            id="field_cveTabProm"
+            data-cy="cveTabProm"
+            formControlName="cveTabProm"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.tabuladorActividadProducto.nivel" for="field_nivel">Nivel</label>
+          <input type="number" class="form-control" name="nivel" id="field_nivel" data-cy="nivel" formControlName="nivel" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.tabuladorActividadProducto.descripcion" for="field_descripcion"
+            >Descripcion</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="descripcion"
+            id="field_descripcion"
+            data-cy="descripcion"
+            formControlName="descripcion"
+          />
+          <div *ngIf="editForm.get('descripcion')!.invalid && (editForm.get('descripcion')!.dirty || editForm.get('descripcion')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('descripcion')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 100 }"
+            >
+              Este campo no puede superar más de 100 caracteres.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.tabuladorActividadProducto.ingresoMinimo" for="field_ingresoMinimo"
+            >Ingreso Minimo</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="ingresoMinimo"
+            id="field_ingresoMinimo"
+            data-cy="ingresoMinimo"
+            formControlName="ingresoMinimo"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.tabuladorActividadProducto.ingresoMaximo" for="field_ingresoMaximo"
+            >Ingreso Maximo</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="ingresoMaximo"
+            id="field_ingresoMaximo"
+            data-cy="ingresoMaximo"
+            formControlName="ingresoMaximo"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.tabuladorActividadProducto.puntosMaximos" for="field_puntosMaximos"
+            >Puntos Maximos</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="puntosMaximos"
+            id="field_puntosMaximos"
+            data-cy="puntosMaximos"
+            formControlName="puntosMaximos"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.tabuladorActividadProducto.modifiedBy" for="field_modifiedBy">Modified By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="modifiedBy"
+            id="field_modifiedBy"
+            data-cy="modifiedBy"
+            formControlName="modifiedBy"
+          />
+          <div *ngIf="editForm.get('modifiedBy')!.invalid && (editForm.get('modifiedBy')!.dirty || editForm.get('modifiedBy')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('modifiedBy')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 100 }"
+            >
+              Este campo no puede superar más de 100 caracteres.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.tabuladorActividadProducto.createdDate" for="field_createdDate"
+            >Created Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="datetime-local"
+              class="form-control"
+              name="createdDate"
+              formControlName="createdDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.tabuladorActividadProducto.lastModifiedDate" for="field_lastModifiedDate"
+            >Last Modified Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_lastModifiedDate"
+              data-cy="lastModifiedDate"
+              type="datetime-local"
+              class="form-control"
+              name="lastModifiedDate"
+              formControlName="lastModifiedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.tabuladorActividadProducto.tabuladorActSuperior" for="field_tabuladorActSuperior"
+            >Tabulador Act Superior</label
+          >
+          <select
+            class="form-control"
+            id="field_tabuladorActSuperior"
+            data-cy="tabuladorActSuperior"
+            name="tabuladorActSuperior"
+            formControlName="tabuladorActSuperior"
+            [compareWith]="compareTabuladorActividadProducto"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="tabuladorActividadProductoOption"
+              *ngFor="let tabuladorActividadProductoOption of tabuladorActividadProductosSharedCollection"
+            >
+              {{ tabuladorActividadProductoOption.descripcion }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.tabuladorActividadProducto.tabulador" for="field_tabulador">Tabulador</label>
+          <select
+            class="form-control"
+            id="field_tabulador"
+            data-cy="tabulador"
+            name="tabulador"
+            formControlName="tabulador"
+            [compareWith]="compareTabuladorPromocion"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="tabuladorPromocionOption" *ngFor="let tabuladorPromocionOption of tabuladorPromocionsSharedCollection">
+              {{ tabuladorPromocionOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

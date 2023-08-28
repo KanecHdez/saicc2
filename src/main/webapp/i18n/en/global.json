@@ -7,6 +7,15 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
+        "academico": "Academico",
+        "dictamen": "Dictamen",
+        "periodo": "Periodo",
+        "comisionDictaminadora": "Comision Dictaminadora",
+        "centroDocente": "Centro Docente",
+        "puesto": "Puesto",
+        "tabuladorPromocion": "Tabulador Promocion",
+        "tabuladorActividadProducto": "Tabulador Actividad Producto",
+        "actividadProducto": "Actividad Producto",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

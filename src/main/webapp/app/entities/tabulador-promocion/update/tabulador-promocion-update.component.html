@@ -1,0 +1,159 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-tabulador-promocion-heading"
+        data-cy="TabuladorPromocionCreateUpdateHeading"
+        jhiTranslate="saiccApp.tabuladorPromocion.home.createOrEditLabel"
+      >
+        Crear o editar Tabulador Promocion
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.tabuladorPromocion.inicioVigencia" for="field_inicioVigencia"
+            >Inicio Vigencia</label
+          >
+          <div class="input-group">
+            <input
+              id="field_inicioVigencia"
+              data-cy="inicioVigencia"
+              type="text"
+              class="form-control"
+              name="inicioVigencia"
+              ngbDatepicker
+              #inicioVigenciaDp="ngbDatepicker"
+              formControlName="inicioVigencia"
+            />
+            <button type="button" class="btn btn-secondary" (click)="inicioVigenciaDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.tabuladorPromocion.finVigencia" for="field_finVigencia">Fin Vigencia</label>
+          <div class="input-group">
+            <input
+              id="field_finVigencia"
+              data-cy="finVigencia"
+              type="text"
+              class="form-control"
+              name="finVigencia"
+              ngbDatepicker
+              #finVigenciaDp="ngbDatepicker"
+              formControlName="finVigencia"
+            />
+            <button type="button" class="btn btn-secondary" (click)="finVigenciaDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.tabuladorPromocion.descripcion" for="field_descripcion">Descripcion</label>
+          <input
+            type="text"
+            class="form-control"
+            name="descripcion"
+            id="field_descripcion"
+            data-cy="descripcion"
+            formControlName="descripcion"
+          />
+          <div *ngIf="editForm.get('descripcion')!.invalid && (editForm.get('descripcion')!.dirty || editForm.get('descripcion')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('descripcion')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 50 }"
+            >
+              Este campo no puede superar más de 50 caracteres.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.tabuladorPromocion.activo" for="field_activo">Activo</label>
+          <input type="checkbox" class="form-check" name="activo" id="field_activo" data-cy="activo" formControlName="activo" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.tabuladorPromocion.modifiedBy" for="field_modifiedBy">Modified By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="modifiedBy"
+            id="field_modifiedBy"
+            data-cy="modifiedBy"
+            formControlName="modifiedBy"
+          />
+          <div *ngIf="editForm.get('modifiedBy')!.invalid && (editForm.get('modifiedBy')!.dirty || editForm.get('modifiedBy')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('modifiedBy')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 100 }"
+            >
+              Este campo no puede superar más de 100 caracteres.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.tabuladorPromocion.createdDate" for="field_createdDate">Created Date</label>
+          <div class="d-flex">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="datetime-local"
+              class="form-control"
+              name="createdDate"
+              formControlName="createdDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.tabuladorPromocion.lastModifiedDate" for="field_lastModifiedDate"
+            >Last Modified Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_lastModifiedDate"
+              data-cy="lastModifiedDate"
+              type="datetime-local"
+              class="form-control"
+              name="lastModifiedDate"
+              formControlName="lastModifiedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

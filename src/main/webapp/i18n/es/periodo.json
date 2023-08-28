@@ -1,0 +1,29 @@
+{
+  "saiccApp": {
+    "periodo": {
+      "home": {
+        "title": "Periodos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Periodo",
+        "createOrEditLabel": "Crear o editar Periodo",
+        "notFound": "Ningún Periodos encontrado"
+      },
+      "created": "Un nuevo Periodo ha sido creado con el identificador {{ param }}",
+      "updated": "Un Periodo ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Periodo ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Periodo {{ id }}?"
+      },
+      "detail": {
+        "title": "Periodo"
+      },
+      "id": "ID",
+      "anio": "Anio",
+      "periodo": "Periodo",
+      "descripcion": "Descripcion",
+      "modifiedBy": "Modified By",
+      "createdDate": "Created Date",
+      "lastModifiedDate": "Last Modified Date"
+    }
+  }
+}

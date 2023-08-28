@@ -1,0 +1,283 @@
+<div>
+  <h2 id="page-heading" data-cy="DictamenHeading">
+    <span jhiTranslate="saiccApp.dictamen.home.title">Dictamen</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="saiccApp.dictamen.home.refreshListLabel">Refrescar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-dictamen"
+        [routerLink]="['/dictamen/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="saiccApp.dictamen.home.createLabel"> Crear nuevo Dictamen </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="dictamen?.length === 0">
+    <span jhiTranslate="saiccApp.dictamen.home.notFound">Ningún Dictamen encontrado</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="dictamen && dictamen.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="noDictamen">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.dictamen.noDictamen">No Dictamen</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fechaPromocion">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.dictamen.fechaPromocion">Fecha Promocion</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="puntosAlcanzados">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.dictamen.puntosAlcanzados">Puntos Alcanzados</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="puntosRequeridos">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.dictamen.puntosRequeridos">Puntos Requeridos</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="puntosExcedentes">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.dictamen.puntosExcedentes">Puntos Excedentes</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="puntosFaltantes">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.dictamen.puntosFaltantes">Puntos Faltantes</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="puntosExcedentesAnterior">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.dictamen.puntosExcedentesAnterior">Puntos Excedentes Anterior</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="puntosPuestoActual">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.dictamen.puntosPuestoActual">Puntos Puesto Actual</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="puntosPuestoSolicitado">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.dictamen.puntosPuestoSolicitado">Puntos Puesto Solicitado</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="procede">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.dictamen.procede">Procede</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="numeroInstancia">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.dictamen.numeroInstancia">Numero Instancia</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="folioHomologacion">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.dictamen.folioHomologacion">Folio Homologacion</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="modifiedBy">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.dictamen.modifiedBy">Modified By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.dictamen.createdDate">Created Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lastModifiedDate">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.dictamen.lastModifiedDate">Last Modified Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="academico.nombres">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.dictamen.academico">Academico</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="puestoActual.nombre">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.dictamen.puestoActual">Puesto Actual</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="puestoSolicitado.nombre">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.dictamen.puestoSolicitado">Puesto Solicitado</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="periodo.descripcion">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.dictamen.periodo">Periodo</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="comisionDictaminadora.nombre">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.dictamen.comisionDictaminadora">Comision Dictaminadora</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="dependencia.nombre">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.dictamen.dependencia">Dependencia</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="tabuladorPromocion.id">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.dictamen.tabuladorPromocion">Tabulador Promocion</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dictamen of dictamen; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/dictamen', dictamen.id, 'view']">{{ dictamen.id }}</a>
+          </td>
+          <td>{{ dictamen.noDictamen }}</td>
+          <td>{{ dictamen.fechaPromocion | formatMediumDate }}</td>
+          <td>{{ dictamen.puntosAlcanzados }}</td>
+          <td>{{ dictamen.puntosRequeridos }}</td>
+          <td>{{ dictamen.puntosExcedentes }}</td>
+          <td>{{ dictamen.puntosFaltantes }}</td>
+          <td>{{ dictamen.puntosExcedentesAnterior }}</td>
+          <td>{{ dictamen.puntosPuestoActual }}</td>
+          <td>{{ dictamen.puntosPuestoSolicitado }}</td>
+          <td>{{ dictamen.procede }}</td>
+          <td>{{ dictamen.numeroInstancia }}</td>
+          <td>{{ dictamen.folioHomologacion }}</td>
+          <td>{{ dictamen.modifiedBy }}</td>
+          <td>{{ dictamen.createdDate | formatMediumDatetime }}</td>
+          <td>{{ dictamen.lastModifiedDate | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="dictamen.academico">
+              <a [routerLink]="['/academico', dictamen.academico.id, 'view']">{{ dictamen.academico.nombres }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="dictamen.puestoActual">
+              <a [routerLink]="['/puesto', dictamen.puestoActual.id, 'view']">{{ dictamen.puestoActual.nombre }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="dictamen.puestoSolicitado">
+              <a [routerLink]="['/puesto', dictamen.puestoSolicitado.id, 'view']">{{ dictamen.puestoSolicitado.nombre }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="dictamen.periodo">
+              <a [routerLink]="['/periodo', dictamen.periodo.id, 'view']">{{ dictamen.periodo.descripcion }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="dictamen.comisionDictaminadora">
+              <a [routerLink]="['/comision-dictaminadora', dictamen.comisionDictaminadora.id, 'view']">{{
+                dictamen.comisionDictaminadora.nombre
+              }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="dictamen.dependencia">
+              <a [routerLink]="['/centro-docente', dictamen.dependencia.id, 'view']">{{ dictamen.dependencia.nombre }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="dictamen.tabuladorPromocion">
+              <a [routerLink]="['/tabulador-promocion', dictamen.tabuladorPromocion.id, 'view']">{{ dictamen.tabuladorPromocion.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/dictamen', dictamen.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Vista</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/dictamen', dictamen.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+              </button>
+
+              <button type="submit" (click)="delete(dictamen)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="dictamen && dictamen.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

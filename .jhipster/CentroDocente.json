@@ -1,0 +1,33 @@
+{
+  "applications": "*",
+  "changelogDate": "20230825180025",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "centrodocente",
+  "fields": [
+    {
+      "fieldName": "cve",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "100"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "CentroDocente",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "nombre",
+      "otherEntityName": "comisionDictaminadora",
+      "relationshipName": "comisionDictaminadora",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

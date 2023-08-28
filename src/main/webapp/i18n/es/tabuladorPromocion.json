@@ -1,0 +1,31 @@
+{
+  "saiccApp": {
+    "tabuladorPromocion": {
+      "home": {
+        "title": "Tabulador Promocions",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Tabulador Promocion",
+        "createOrEditLabel": "Crear o editar Tabulador Promocion",
+        "notFound": "Ningún Tabulador Promocions encontrado"
+      },
+      "created": "Un nuevo Tabulador Promocion ha sido creado con el identificador {{ param }}",
+      "updated": "Un Tabulador Promocion ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Tabulador Promocion ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Tabulador Promocion {{ id }}?"
+      },
+      "detail": {
+        "title": "Tabulador Promocion"
+      },
+      "id": "ID",
+      "inicioVigencia": "Inicio Vigencia",
+      "finVigencia": "Fin Vigencia",
+      "descripcion": "Descripcion",
+      "activo": "Activo",
+      "modifiedBy": "Modified By",
+      "createdDate": "Created Date",
+      "lastModifiedDate": "Last Modified Date",
+      "tabuladorActProd": "Tabulador Act Prod"
+    }
+  }
+}

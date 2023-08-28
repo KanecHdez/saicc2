@@ -1,0 +1,86 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="tabuladorActividadProducto">
+      <h2 data-cy="tabuladorActividadProductoDetailsHeading">
+        <span jhiTranslate="saiccApp.tabuladorActividadProducto.detail.title">Tabulador Actividad Producto</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ tabuladorActividadProducto.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.tabuladorActividadProducto.clave">Clave</span></dt>
+        <dd>
+          <span>{{ tabuladorActividadProducto.clave }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.tabuladorActividadProducto.cveTabProm">Cve Tab Prom</span></dt>
+        <dd>
+          <span>{{ tabuladorActividadProducto.cveTabProm }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.tabuladorActividadProducto.nivel">Nivel</span></dt>
+        <dd>
+          <span>{{ tabuladorActividadProducto.nivel }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.tabuladorActividadProducto.descripcion">Descripcion</span></dt>
+        <dd>
+          <span>{{ tabuladorActividadProducto.descripcion }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.tabuladorActividadProducto.ingresoMinimo">Ingreso Minimo</span></dt>
+        <dd>
+          <span>{{ tabuladorActividadProducto.ingresoMinimo }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.tabuladorActividadProducto.ingresoMaximo">Ingreso Maximo</span></dt>
+        <dd>
+          <span>{{ tabuladorActividadProducto.ingresoMaximo }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.tabuladorActividadProducto.puntosMaximos">Puntos Maximos</span></dt>
+        <dd>
+          <span>{{ tabuladorActividadProducto.puntosMaximos }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.tabuladorActividadProducto.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ tabuladorActividadProducto.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.tabuladorActividadProducto.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ tabuladorActividadProducto.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.tabuladorActividadProducto.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+          <span>{{ tabuladorActividadProducto.lastModifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.tabuladorActividadProducto.tabuladorActSuperior">Tabulador Act Superior</span></dt>
+        <dd>
+          <div *ngIf="tabuladorActividadProducto.tabuladorActSuperior">
+            <a [routerLink]="['/tabulador-actividad-producto', tabuladorActividadProducto.tabuladorActSuperior.id, 'view']">{{
+              tabuladorActividadProducto.tabuladorActSuperior.descripcion
+            }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.tabuladorActividadProducto.tabulador">Tabulador</span></dt>
+        <dd>
+          <div *ngIf="tabuladorActividadProducto.tabulador">
+            <a [routerLink]="['/tabulador-promocion', tabuladorActividadProducto.tabulador.id, 'view']">{{
+              tabuladorActividadProducto.tabulador.id
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/tabulador-actividad-producto', tabuladorActividadProducto.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

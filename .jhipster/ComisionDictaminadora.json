@@ -1,0 +1,22 @@
+{
+  "applications": "*",
+  "changelogDate": "20230825180024",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "comisiondictaminadora",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "100"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "ComisionDictaminadora",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceClass"
+}

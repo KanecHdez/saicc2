@@ -1,0 +1,48 @@
+{
+  "applications": "*",
+  "changelogDate": "20230825180026",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "puesto",
+  "fields": [
+    {
+      "fieldName": "cve",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "puntaje",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "ranking",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastModifiedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Puesto",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceClass"
+}

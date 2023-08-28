@@ -1,0 +1,377 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-dictamen-heading" data-cy="DictamenCreateUpdateHeading" jhiTranslate="saiccApp.dictamen.home.createOrEditLabel">
+        Crear o editar Dictamen
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.dictamen.noDictamen" for="field_noDictamen">No Dictamen</label>
+          <input
+            type="number"
+            class="form-control"
+            name="noDictamen"
+            id="field_noDictamen"
+            data-cy="noDictamen"
+            formControlName="noDictamen"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.dictamen.fechaPromocion" for="field_fechaPromocion">Fecha Promocion</label>
+          <div class="input-group">
+            <input
+              id="field_fechaPromocion"
+              data-cy="fechaPromocion"
+              type="text"
+              class="form-control"
+              name="fechaPromocion"
+              ngbDatepicker
+              #fechaPromocionDp="ngbDatepicker"
+              formControlName="fechaPromocion"
+            />
+            <button type="button" class="btn btn-secondary" (click)="fechaPromocionDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.dictamen.puntosAlcanzados" for="field_puntosAlcanzados">Puntos Alcanzados</label>
+          <input
+            type="number"
+            class="form-control"
+            name="puntosAlcanzados"
+            id="field_puntosAlcanzados"
+            data-cy="puntosAlcanzados"
+            formControlName="puntosAlcanzados"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.dictamen.puntosRequeridos" for="field_puntosRequeridos">Puntos Requeridos</label>
+          <input
+            type="number"
+            class="form-control"
+            name="puntosRequeridos"
+            id="field_puntosRequeridos"
+            data-cy="puntosRequeridos"
+            formControlName="puntosRequeridos"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.dictamen.puntosExcedentes" for="field_puntosExcedentes">Puntos Excedentes</label>
+          <input
+            type="number"
+            class="form-control"
+            name="puntosExcedentes"
+            id="field_puntosExcedentes"
+            data-cy="puntosExcedentes"
+            formControlName="puntosExcedentes"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.dictamen.puntosFaltantes" for="field_puntosFaltantes">Puntos Faltantes</label>
+          <input
+            type="number"
+            class="form-control"
+            name="puntosFaltantes"
+            id="field_puntosFaltantes"
+            data-cy="puntosFaltantes"
+            formControlName="puntosFaltantes"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.dictamen.puntosExcedentesAnterior" for="field_puntosExcedentesAnterior"
+            >Puntos Excedentes Anterior</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="puntosExcedentesAnterior"
+            id="field_puntosExcedentesAnterior"
+            data-cy="puntosExcedentesAnterior"
+            formControlName="puntosExcedentesAnterior"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.dictamen.puntosPuestoActual" for="field_puntosPuestoActual"
+            >Puntos Puesto Actual</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="puntosPuestoActual"
+            id="field_puntosPuestoActual"
+            data-cy="puntosPuestoActual"
+            formControlName="puntosPuestoActual"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.dictamen.puntosPuestoSolicitado" for="field_puntosPuestoSolicitado"
+            >Puntos Puesto Solicitado</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="puntosPuestoSolicitado"
+            id="field_puntosPuestoSolicitado"
+            data-cy="puntosPuestoSolicitado"
+            formControlName="puntosPuestoSolicitado"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.dictamen.procede" for="field_procede">Procede</label>
+          <input type="checkbox" class="form-check" name="procede" id="field_procede" data-cy="procede" formControlName="procede" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.dictamen.numeroInstancia" for="field_numeroInstancia">Numero Instancia</label>
+          <input
+            type="number"
+            class="form-control"
+            name="numeroInstancia"
+            id="field_numeroInstancia"
+            data-cy="numeroInstancia"
+            formControlName="numeroInstancia"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.dictamen.folioHomologacion" for="field_folioHomologacion"
+            >Folio Homologacion</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="folioHomologacion"
+            id="field_folioHomologacion"
+            data-cy="folioHomologacion"
+            formControlName="folioHomologacion"
+          />
+          <div
+            *ngIf="
+              editForm.get('folioHomologacion')!.invalid &&
+              (editForm.get('folioHomologacion')!.dirty || editForm.get('folioHomologacion')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('folioHomologacion')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 15 }"
+            >
+              Este campo no puede superar más de 15 caracteres.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.dictamen.modifiedBy" for="field_modifiedBy">Modified By</label>
+          <input
+            type="text"
+            class="form-control"
+            name="modifiedBy"
+            id="field_modifiedBy"
+            data-cy="modifiedBy"
+            formControlName="modifiedBy"
+          />
+          <div *ngIf="editForm.get('modifiedBy')!.invalid && (editForm.get('modifiedBy')!.dirty || editForm.get('modifiedBy')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('modifiedBy')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 100 }"
+            >
+              Este campo no puede superar más de 100 caracteres.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.dictamen.createdDate" for="field_createdDate">Created Date</label>
+          <div class="d-flex">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="datetime-local"
+              class="form-control"
+              name="createdDate"
+              formControlName="createdDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.dictamen.lastModifiedDate" for="field_lastModifiedDate"
+            >Last Modified Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_lastModifiedDate"
+              data-cy="lastModifiedDate"
+              type="datetime-local"
+              class="form-control"
+              name="lastModifiedDate"
+              formControlName="lastModifiedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.dictamen.academico" for="field_academico">Academico</label>
+          <select
+            class="form-control"
+            id="field_academico"
+            data-cy="academico"
+            name="academico"
+            formControlName="academico"
+            [compareWith]="compareAcademico"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="academicoOption" *ngFor="let academicoOption of academicosSharedCollection">
+              {{ academicoOption.nombres }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.dictamen.puestoActual" for="field_puestoActual">Puesto Actual</label>
+          <select
+            class="form-control"
+            id="field_puestoActual"
+            data-cy="puestoActual"
+            name="puestoActual"
+            formControlName="puestoActual"
+            [compareWith]="comparePuesto"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="puestoOption" *ngFor="let puestoOption of puestosSharedCollection">{{ puestoOption.nombre }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.dictamen.puestoSolicitado" for="field_puestoSolicitado">Puesto Solicitado</label>
+          <select
+            class="form-control"
+            id="field_puestoSolicitado"
+            data-cy="puestoSolicitado"
+            name="puestoSolicitado"
+            formControlName="puestoSolicitado"
+            [compareWith]="comparePuesto"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="puestoOption" *ngFor="let puestoOption of puestosSharedCollection">{{ puestoOption.nombre }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.dictamen.periodo" for="field_periodo">Periodo</label>
+          <select
+            class="form-control"
+            id="field_periodo"
+            data-cy="periodo"
+            name="periodo"
+            formControlName="periodo"
+            [compareWith]="comparePeriodo"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="periodoOption" *ngFor="let periodoOption of periodosSharedCollection">
+              {{ periodoOption.descripcion }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.dictamen.comisionDictaminadora" for="field_comisionDictaminadora"
+            >Comision Dictaminadora</label
+          >
+          <select
+            class="form-control"
+            id="field_comisionDictaminadora"
+            data-cy="comisionDictaminadora"
+            name="comisionDictaminadora"
+            formControlName="comisionDictaminadora"
+            [compareWith]="compareComisionDictaminadora"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="comisionDictaminadoraOption"
+              *ngFor="let comisionDictaminadoraOption of comisionDictaminadorasSharedCollection"
+            >
+              {{ comisionDictaminadoraOption.nombre }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.dictamen.dependencia" for="field_dependencia">Dependencia</label>
+          <select
+            class="form-control"
+            id="field_dependencia"
+            data-cy="dependencia"
+            name="dependencia"
+            formControlName="dependencia"
+            [compareWith]="compareCentroDocente"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="centroDocenteOption" *ngFor="let centroDocenteOption of centroDocentesSharedCollection">
+              {{ centroDocenteOption.nombre }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="saiccApp.dictamen.tabuladorPromocion" for="field_tabuladorPromocion"
+            >Tabulador Promocion</label
+          >
+          <select
+            class="form-control"
+            id="field_tabuladorPromocion"
+            data-cy="tabuladorPromocion"
+            name="tabuladorPromocion"
+            formControlName="tabuladorPromocion"
+            [compareWith]="compareTabuladorPromocion"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="tabuladorPromocionOption" *ngFor="let tabuladorPromocionOption of tabuladorPromocionsSharedCollection">
+              {{ tabuladorPromocionOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

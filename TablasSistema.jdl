@@ -1,0 +1,120 @@
+entity Academico {
+	cveEmpleado Integer,
+	nombres String maxlength(100),
+	primerApellido String maxlength(100),
+	segundoApellido String maxlength(100),
+	modifiedBy String maxlength(100),
+	createdDate Instant,
+	lastModifiedDate Instant
+}
+
+entity Dictamen {
+	noDictamen Integer,
+	fechaPromocion LocalDate,
+	puntosAlcanzados Float,
+	puntosRequeridos Float,
+	puntosExcedentes Float,
+	puntosFaltantes Float,
+	puntosExcedentesAnterior Float,
+	puntosPuestoActual Float,
+	puntosPuestoSolicitado Float,
+	procede Boolean,
+	numeroInstancia Integer,
+	folioHomologacion String maxlength(15),
+	modifiedBy String maxlength(100),
+	createdDate Instant,
+	lastModifiedDate Instant
+	
+}
+
+entity Periodo {
+	anio Integer,
+	periodo Integer,
+	descripcion String maxlength(50),
+	modifiedBy String maxlength(100),
+	createdDate Instant,
+	lastModifiedDate Instant
+}
+
+entity ComisionDictaminadora (comisiondictaminadora){
+	nombre String maxlength(100)
+}
+
+entity CentroDocente (centrodocente){
+	cve Integer,
+	nombre String maxlength(100)
+}
+
+entity Puesto {
+	cve Integer,
+	nombre String maxlength(100),
+	puntaje Float,
+	ranking Integer,
+	modifiedBy String maxlength(100),
+	createdDate Instant,
+	lastModifiedDate Instant
+}
+
+entity TabuladorPromocion (tabuladorpromocion){
+	inicioVigencia LocalDate,
+	finVigencia LocalDate,
+	descripcion String maxlength(50),
+	activo Boolean,
+	modifiedBy String maxlength(100),
+	createdDate Instant,
+	lastModifiedDate Instant
+}
+
+entity TabuladorActividadProducto (tabuladoractproduc){
+	clave String maxlength(10),
+	cveTabProm Integer,
+	nivel Integer,
+	descripcion String maxlength(100),
+	ingresoMinimo Integer,
+	ingresoMaximo Integer,
+	puntosMaximos Integer,
+	modifiedBy String maxlength(100),
+	createdDate Instant,
+	lastModifiedDate Instant
+}
+
+entity ActividadProducto (actividadproducto){
+	descripcion String maxlength(1000),
+	modifiedBy String maxlength(100),
+	createdDate Instant,
+	lastModifiedDate Instant
+}
+
+
+relationship ManyToOne {
+	Dictamen{academico(nombres)} to Academico,
+	Dictamen{puestoActual(nombre)} to Puesto,
+	Dictamen{puestoSolicitado(nombre)} to Puesto,
+	Dictamen{periodo(descripcion)} to Periodo,
+	Dictamen{comisionDictaminadora(nombre)} to ComisionDictaminadora,
+	Dictamen{dependencia(nombre)} to CentroDocente,
+	Dictamen{tabuladorPromocion} to TabuladorPromocion
+}
+
+
+relationship OneToMany {
+  Dictamen{actividad} to ActividadProducto{dictamen(noDictamen)},
+  TabuladorPromocion{tabuladorActProd} to TabuladorActividadProducto{tabulador}
+}
+
+relationship ManyToOne{
+	ActividadProducto{tabuladorActProd (descripcion)} to TabuladorActividadProducto,
+	TabuladorActividadProducto{tabuladorActSuperior(descripcion)} to TabuladorActividadProducto,
+	CentroDocente{comisionDictaminadora(nombre)} to ComisionDictaminadora
+			
+}
+
+paginate Academico, Dictamen, TabuladorActividadProducto, ActividadProducto, Puesto, Periodo with pagination
+paginate CentroDocente with infinite-scroll
+
+// service all with serviceImpl
+
+dto * with mapstruct
+ 
+
+

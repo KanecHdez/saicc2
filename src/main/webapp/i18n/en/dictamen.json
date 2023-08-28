@@ -1,0 +1,46 @@
+{
+  "saiccApp": {
+    "dictamen": {
+      "home": {
+        "title": "Dictamen",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Dictamen",
+        "createOrEditLabel": "Create or edit a Dictamen",
+        "notFound": "No Dictamen found"
+      },
+      "created": "A new Dictamen is created with identifier {{ param }}",
+      "updated": "A Dictamen is updated with identifier {{ param }}",
+      "deleted": "A Dictamen is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Dictamen {{ id }}?"
+      },
+      "detail": {
+        "title": "Dictamen"
+      },
+      "id": "ID",
+      "noDictamen": "No Dictamen",
+      "fechaPromocion": "Fecha Promocion",
+      "puntosAlcanzados": "Puntos Alcanzados",
+      "puntosRequeridos": "Puntos Requeridos",
+      "puntosExcedentes": "Puntos Excedentes",
+      "puntosFaltantes": "Puntos Faltantes",
+      "puntosExcedentesAnterior": "Puntos Excedentes Anterior",
+      "puntosPuestoActual": "Puntos Puesto Actual",
+      "puntosPuestoSolicitado": "Puntos Puesto Solicitado",
+      "procede": "Procede",
+      "numeroInstancia": "Numero Instancia",
+      "folioHomologacion": "Folio Homologacion",
+      "modifiedBy": "Modified By",
+      "createdDate": "Created Date",
+      "lastModifiedDate": "Last Modified Date",
+      "actividad": "Actividad",
+      "academico": "Academico",
+      "puestoActual": "Puesto Actual",
+      "puestoSolicitado": "Puesto Solicitado",
+      "periodo": "Periodo",
+      "comisionDictaminadora": "Comision Dictaminadora",
+      "dependencia": "Dependencia",
+      "tabuladorPromocion": "Tabulador Promocion"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "applications": "*",
+  "changelogDate": "20230825180029",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "actividadproducto",
+  "fields": [
+    {
+      "fieldName": "descripcion",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "1000"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastModifiedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "ActividadProducto",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "descripcion",
+      "otherEntityName": "tabuladorActividadProducto",
+      "relationshipName": "tabuladorActProd",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "noDictamen",
+      "otherEntityName": "dictamen",
+      "otherEntityRelationshipName": "actividad",
+      "relationshipName": "dictamen",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

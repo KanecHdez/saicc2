@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="puesto">
+      <h2 data-cy="puestoDetailsHeading"><span jhiTranslate="saiccApp.puesto.detail.title">Puesto</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ puesto.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.puesto.cve">Cve</span></dt>
+        <dd>
+          <span>{{ puesto.cve }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.puesto.nombre">Nombre</span></dt>
+        <dd>
+          <span>{{ puesto.nombre }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.puesto.puntaje">Puntaje</span></dt>
+        <dd>
+          <span>{{ puesto.puntaje }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.puesto.ranking">Ranking</span></dt>
+        <dd>
+          <span>{{ puesto.ranking }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.puesto.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ puesto.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.puesto.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ puesto.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.puesto.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+          <span>{{ puesto.lastModifiedDate | formatMediumDatetime }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/puesto', puesto.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

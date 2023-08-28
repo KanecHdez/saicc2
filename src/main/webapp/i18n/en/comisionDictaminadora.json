@@ -1,0 +1,24 @@
+{
+  "saiccApp": {
+    "comisionDictaminadora": {
+      "home": {
+        "title": "Comision Dictaminadoras",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Comision Dictaminadora",
+        "createOrEditLabel": "Create or edit a Comision Dictaminadora",
+        "notFound": "No Comision Dictaminadoras found"
+      },
+      "created": "A new Comision Dictaminadora is created with identifier {{ param }}",
+      "updated": "A Comision Dictaminadora is updated with identifier {{ param }}",
+      "deleted": "A Comision Dictaminadora is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Comision Dictaminadora {{ id }}?"
+      },
+      "detail": {
+        "title": "Comision Dictaminadora"
+      },
+      "id": "ID",
+      "nombre": "Nombre"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="centroDocente">
+      <h2 data-cy="centroDocenteDetailsHeading"><span jhiTranslate="saiccApp.centroDocente.detail.title">Centro Docente</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ centroDocente.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.centroDocente.cve">Cve</span></dt>
+        <dd>
+          <span>{{ centroDocente.cve }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.centroDocente.nombre">Nombre</span></dt>
+        <dd>
+          <span>{{ centroDocente.nombre }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.centroDocente.comisionDictaminadora">Comision Dictaminadora</span></dt>
+        <dd>
+          <div *ngIf="centroDocente.comisionDictaminadora">
+            <a [routerLink]="['/comision-dictaminadora', centroDocente.comisionDictaminadora.id, 'view']">{{
+              centroDocente.comisionDictaminadora.nombre
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/centro-docente', centroDocente.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

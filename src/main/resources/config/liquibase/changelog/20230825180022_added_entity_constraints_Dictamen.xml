@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity Dictamen.
+    -->
+    <changeSet id="20230825180022-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="academico_id"
+                                 baseTableName="dictamen"
+                                 constraintName="fk_dictamen__academico_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="academico"/>
+
+        <addForeignKeyConstraint baseColumnNames="puesto_actual_id"
+                                 baseTableName="dictamen"
+                                 constraintName="fk_dictamen__puesto_actual_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="puesto"/>
+
+        <addForeignKeyConstraint baseColumnNames="puesto_solicitado_id"
+                                 baseTableName="dictamen"
+                                 constraintName="fk_dictamen__puesto_solicitado_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="puesto"/>
+
+        <addForeignKeyConstraint baseColumnNames="periodo_id"
+                                 baseTableName="dictamen"
+                                 constraintName="fk_dictamen__periodo_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="periodo"/>
+
+        <addForeignKeyConstraint baseColumnNames="comision_dictaminadora_id"
+                                 baseTableName="dictamen"
+                                 constraintName="fk_dictamen__comision_dictaminadora_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="comisiondictaminadora"/>
+
+        <addForeignKeyConstraint baseColumnNames="dependencia_id"
+                                 baseTableName="dictamen"
+                                 constraintName="fk_dictamen__dependencia_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="centrodocente"/>
+
+        <addForeignKeyConstraint baseColumnNames="tabulador_promocion_id"
+                                 baseTableName="dictamen"
+                                 constraintName="fk_dictamen__tabulador_promocion_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tabuladorpromocion"/>
+    </changeSet>
+</databaseChangeLog>

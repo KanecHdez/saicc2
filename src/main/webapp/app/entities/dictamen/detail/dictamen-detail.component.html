@@ -1,0 +1,132 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="dictamen">
+      <h2 data-cy="dictamenDetailsHeading"><span jhiTranslate="saiccApp.dictamen.detail.title">Dictamen</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ dictamen.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.dictamen.noDictamen">No Dictamen</span></dt>
+        <dd>
+          <span>{{ dictamen.noDictamen }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.dictamen.fechaPromocion">Fecha Promocion</span></dt>
+        <dd>
+          <span>{{ dictamen.fechaPromocion | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.dictamen.puntosAlcanzados">Puntos Alcanzados</span></dt>
+        <dd>
+          <span>{{ dictamen.puntosAlcanzados }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.dictamen.puntosRequeridos">Puntos Requeridos</span></dt>
+        <dd>
+          <span>{{ dictamen.puntosRequeridos }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.dictamen.puntosExcedentes">Puntos Excedentes</span></dt>
+        <dd>
+          <span>{{ dictamen.puntosExcedentes }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.dictamen.puntosFaltantes">Puntos Faltantes</span></dt>
+        <dd>
+          <span>{{ dictamen.puntosFaltantes }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.dictamen.puntosExcedentesAnterior">Puntos Excedentes Anterior</span></dt>
+        <dd>
+          <span>{{ dictamen.puntosExcedentesAnterior }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.dictamen.puntosPuestoActual">Puntos Puesto Actual</span></dt>
+        <dd>
+          <span>{{ dictamen.puntosPuestoActual }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.dictamen.puntosPuestoSolicitado">Puntos Puesto Solicitado</span></dt>
+        <dd>
+          <span>{{ dictamen.puntosPuestoSolicitado }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.dictamen.procede">Procede</span></dt>
+        <dd>
+          <span>{{ dictamen.procede }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.dictamen.numeroInstancia">Numero Instancia</span></dt>
+        <dd>
+          <span>{{ dictamen.numeroInstancia }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.dictamen.folioHomologacion">Folio Homologacion</span></dt>
+        <dd>
+          <span>{{ dictamen.folioHomologacion }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.dictamen.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ dictamen.modifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.dictamen.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ dictamen.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.dictamen.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+          <span>{{ dictamen.lastModifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.dictamen.academico">Academico</span></dt>
+        <dd>
+          <div *ngIf="dictamen.academico">
+            <a [routerLink]="['/academico', dictamen.academico.id, 'view']">{{ dictamen.academico.nombres }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.dictamen.puestoActual">Puesto Actual</span></dt>
+        <dd>
+          <div *ngIf="dictamen.puestoActual">
+            <a [routerLink]="['/puesto', dictamen.puestoActual.id, 'view']">{{ dictamen.puestoActual.nombre }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.dictamen.puestoSolicitado">Puesto Solicitado</span></dt>
+        <dd>
+          <div *ngIf="dictamen.puestoSolicitado">
+            <a [routerLink]="['/puesto', dictamen.puestoSolicitado.id, 'view']">{{ dictamen.puestoSolicitado.nombre }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.dictamen.periodo">Periodo</span></dt>
+        <dd>
+          <div *ngIf="dictamen.periodo">
+            <a [routerLink]="['/periodo', dictamen.periodo.id, 'view']">{{ dictamen.periodo.descripcion }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.dictamen.comisionDictaminadora">Comision Dictaminadora</span></dt>
+        <dd>
+          <div *ngIf="dictamen.comisionDictaminadora">
+            <a [routerLink]="['/comision-dictaminadora', dictamen.comisionDictaminadora.id, 'view']">{{
+              dictamen.comisionDictaminadora.nombre
+            }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.dictamen.dependencia">Dependencia</span></dt>
+        <dd>
+          <div *ngIf="dictamen.dependencia">
+            <a [routerLink]="['/centro-docente', dictamen.dependencia.id, 'view']">{{ dictamen.dependencia.nombre }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="saiccApp.dictamen.tabuladorPromocion">Tabulador Promocion</span></dt>
+        <dd>
+          <div *ngIf="dictamen.tabuladorPromocion">
+            <a [routerLink]="['/tabulador-promocion', dictamen.tabuladorPromocion.id, 'view']">{{ dictamen.tabuladorPromocion.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/dictamen', dictamen.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

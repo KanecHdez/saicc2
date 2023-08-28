@@ -1,0 +1,151 @@
+<div>
+  <h2 id="page-heading" data-cy="ActividadProductoHeading">
+    <span jhiTranslate="saiccApp.actividadProducto.home.title">Actividad Productos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="saiccApp.actividadProducto.home.refreshListLabel">Refrescar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-actividad-producto"
+        [routerLink]="['/actividad-producto/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="saiccApp.actividadProducto.home.createLabel"> Crear nuevo Actividad Producto </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="actividadProductos?.length === 0">
+    <span jhiTranslate="saiccApp.actividadProducto.home.notFound">Ningún Actividad Productos encontrado</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="actividadProductos && actividadProductos.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="descripcion">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.actividadProducto.descripcion">Descripcion</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="modifiedBy">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.actividadProducto.modifiedBy">Modified By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.actividadProducto.createdDate">Created Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lastModifiedDate">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.actividadProducto.lastModifiedDate">Last Modified Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="tabuladorActProd.descripcion">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.actividadProducto.tabuladorActProd">Tabulador Act Prod</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="dictamen.noDictamen">
+            <div class="d-flex">
+              <span jhiTranslate="saiccApp.actividadProducto.dictamen">Dictamen</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let actividadProducto of actividadProductos; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/actividad-producto', actividadProducto.id, 'view']">{{ actividadProducto.id }}</a>
+          </td>
+          <td>{{ actividadProducto.descripcion }}</td>
+          <td>{{ actividadProducto.modifiedBy }}</td>
+          <td>{{ actividadProducto.createdDate | formatMediumDatetime }}</td>
+          <td>{{ actividadProducto.lastModifiedDate | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="actividadProducto.tabuladorActProd">
+              <a [routerLink]="['/tabulador-actividad-producto', actividadProducto.tabuladorActProd.id, 'view']">{{
+                actividadProducto.tabuladorActProd.descripcion
+              }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="actividadProducto.dictamen">
+              <a [routerLink]="['/dictamen', actividadProducto.dictamen.id, 'view']">{{ actividadProducto.dictamen.noDictamen }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/actividad-producto', actividadProducto.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Vista</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/actividad-producto', actividadProducto.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+              </button>
+
+              <button type="submit" (click)="delete(actividadProducto)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="actividadProductos && actividadProductos.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

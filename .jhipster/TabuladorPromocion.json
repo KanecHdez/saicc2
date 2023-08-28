@@ -1,0 +1,55 @@
+{
+  "applications": "*",
+  "changelogDate": "20230825180027",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "tabuladorpromocion",
+  "fields": [
+    {
+      "fieldName": "inicioVigencia",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "finVigencia",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "descripcion",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "activo",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastModifiedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "TabuladorPromocion",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "tabuladorActividadProducto",
+      "otherEntityRelationshipName": "tabulador",
+      "relationshipName": "tabuladorActProd",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

@@ -1,0 +1,75 @@
+{
+  "applications": "*",
+  "changelogDate": "20230825180028",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "tabuladoractproduc",
+  "fields": [
+    {
+      "fieldName": "clave",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "10"
+    },
+    {
+      "fieldName": "cveTabProm",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nivel",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "descripcion",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "ingresoMinimo",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "ingresoMaximo",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "puntosMaximos",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastModifiedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "TabuladorActividadProducto",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "descripcion",
+      "otherEntityName": "tabuladorActividadProducto",
+      "relationshipName": "tabuladorActSuperior",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "tabuladorPromocion",
+      "otherEntityRelationshipName": "tabuladorActProd",
+      "relationshipName": "tabulador",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}
